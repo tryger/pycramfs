@@ -108,4 +108,5 @@ class Cramfs:
 
     @classmethod
     def from_file(cls, file: FileDescriptorOrPath, offset: int = 0):
-        return cls.from_fd(open(file, "rb"), offset)
+        with open(file, "rb") as fd:
+            return cls.from_fd(fd, offset)
